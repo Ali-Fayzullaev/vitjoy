@@ -452,6 +452,16 @@ function runDevAsserts(list: Product[]) {
   }
 }
 
+// Включаем отладочный баннер Tailwind при NEXT_PUBLIC_DEBUG_TW=1
+function DebugTW() {
+  if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_DEBUG_TW !== '1') return null
+  return (
+    <div className="fixed bottom-3 right-3 z-[100] rounded-xl bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-lg">
+      Tailwind is ACTIVE
+    </div>
+  )
+}
+
 export default function Page() {
   useEffect(() => runDevAsserts(products), [])
   return (
@@ -461,6 +471,23 @@ export default function Page() {
       <Catalog items={products} />
       <Why />
       <Footer />
+      <DebugTW />
     </main>
   )
 }
+
+// --------------------------
+// Tailwind советы (включить в tailwind.config.js):
+// content: ["./app/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+// darkMode: 'class'
+// --------------------------
+// Оптимизация изображений на практике:
+// 1) Кладите оригиналы в /public/images в WebP/AVIF; размер стороны ~1600–2048px.
+// 2) Для hero используйте priority и sizes.
+// 3) Все остальные — lazy по умолчанию, с placeholder blur (см. shimmer).
+// 4) Готовьте 5–6 фото на товар; названия следуйте схеме /images/<slug>/<index>.jpg
+// 5) В продакшн используйте CDN для /public (Vercel/Cloudflare).
+
+/* ============================
+   app/globals.css — версия для Tailwind v4
+   ============================ */
