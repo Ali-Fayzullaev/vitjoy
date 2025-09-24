@@ -204,7 +204,7 @@ function Hero() {
           className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl shadow-lg"
         >
           <SafeImage
-            src="/images/hero.jpg"
+            src="/logo.jpg"
             alt="Лайфстайл VITJOY"
             fill
             className="object-cover"
