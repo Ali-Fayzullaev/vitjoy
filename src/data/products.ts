@@ -3,8 +3,6 @@ export type Product = {
   title: string;
   price: number;
   unit?: string;
-  tags?: string[];
-  description: string;
   kaspiUrl: string;
   images: { src: string; alt: string }[];
 };
@@ -15,9 +13,6 @@ export const products: Product[] = [
     title: "BCAA Vitjoy Аминокомплекс апельсин 180 г",
     price: 9890,
     unit: "₸",
-    tags: ["Хит", "Органик"],
-    description:
-      "Натуральный микс витаминов и суперфудов для энергии и иммунитета.",
     kaspiUrl: "https://kaspi.kz/shop/p/bcaa-vitjoy-aminokompleks-apel-sin-180-g-141866367/",
     images: [
       { src: "/images/img1/img1.png", alt: "Green Boost — баночка" },
@@ -33,8 +28,6 @@ export const products: Product[] = [
     title: "Препарат для укрепления связок и суставов Vitjoy Метил Сульфонил Метан 60 таблеток",
     price: 9890,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/preparat-dlja-ukreplenija-svjazok-i-sustavov-vitjoy-metil-sul-fonil-metan-60-tabletok-141866374/",
     images: [
       { src: "/images/img2/img1.png", alt: "Omega+ — блистер" },
@@ -50,8 +43,6 @@ export const products: Product[] = [
     title: "VITJOY Витамин B5 Пантотеновая кислота капсулы 60 шт",
     price: 4890,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-vitamin-b5-pantotenovaja-kislota-kapsuly-60-sht-144812695/",
     images: [
       { src: "/images/img3/img1.png", alt: "Omega+ — блистер" },
@@ -67,8 +58,6 @@ export const products: Product[] = [
     title: "VITJOY Витамины D3 (5000 МЕ) + K2 капсулы 60 шт",
     price: 4980,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-vitaminy-d3-5000-me-43-k2-kapsuly-60-sht-144812311/",
     images: [
       { src: "/images/img4/img1.png", alt: "Omega+ — блистер" },
@@ -84,8 +73,6 @@ export const products: Product[] = [
     title: "VITJOY Пиколинат хрома с витамином С капсулы 60 шт",
     price: 4890,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-pikolinat-hroma-s-vitaminom-s-kapsuly-60-sht-144811771/",
     images: [
       { src: "/images/img5/img1.png", alt: "Omega+ — блистер" },
@@ -101,8 +88,6 @@ export const products: Product[] = [
     title: "VITJOY альфа липоевая кислота капсулы 60 шт",
     price: 7190,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-al-fa-lipoevaja-kislota-kapsuly-60-sht-145987927/",
     images: [
       { src: "/images/img6/img1.png", alt: "Omega+ — блистер" },
@@ -118,8 +103,6 @@ export const products: Product[] = [
     title: "VITJOY магний капсулы 120 шт",
     price: 7180,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-magnii-kapsuly-120-sht-145987777/",
     images: [
       { src: "/images/img7/img1.png", alt: "Omega+ — блистер" },
@@ -135,8 +118,6 @@ export const products: Product[] = [
     title: "VITJOY Морской Коллаген + Гиалуроновая Кислота + Витамин С капсулы 120 шт",
     price: 9990,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-morskoi-kollagen-43-gialuronovaja-kislota-43-vitamin-s-kapsuly-120-sht-145987845/",
     images: [
       { src: "/images/img8/img1.png", alt: "Omega+ — блистер" },
@@ -152,8 +133,6 @@ export const products: Product[] = [
     title: "Тестостероновый бустер Vitjoy ZMA капсулы/таблетки 90",
     price: 4490,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/testosteronovyi-buster-vitjoy-zma-kapsuly-tabletki-90-141916661/",
     images: [
       { src: "/images/img9/img1.png", alt: "Omega+ — блистер" },
@@ -169,8 +148,6 @@ export const products: Product[] = [
     title: "Аминокислота VITJOY L-Carnitine нейтральный 90 70 г",
     price: 8590,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/aminokislota-vitjoy-l-carnitine-neitral-nyi-90-70-g-137870472/",
     images: [
       { src: "/images/img10/img1.png", alt: "Omega+ — блистер" },
@@ -186,8 +163,6 @@ export const products: Product[] = [
     title: "VITJOY Collagen Complex порошок 180",
     price: 4989,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/vitjoy-collagen-complex-poroshok-180-141866380/",
     images: [
       { src: "/images/img11/img1.png", alt: "Omega+ — блистер" },
@@ -203,8 +178,6 @@ export const products: Product[] = [
     title: "Креатин Vitjoy Креатин Моногидрат и Витамин С Тропический Микс 200 г",
     price: 4290,
     unit: "₸",
-    tags: ["Новинка"],
-    description: "Омега‑3 высокой чистоты: сердце, мозг и суставы — ежедневно.",
     kaspiUrl: "https://kaspi.kz/shop/p/kreatin-vitjoy-kreatin-monogidrat-i-vitamin-s-tropicheskii-miks-200-g-140535544/",
     images: [
       { src: "/images/img12/img1.png", alt: "Omega+ — блистер" },
