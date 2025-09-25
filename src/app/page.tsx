@@ -5,7 +5,6 @@ import { ProductGrid } from "@/components/products/ProductGrid";
 import { ProductModal } from "@/components/products/ProductModal";
 import { FiltersSidebar } from "@/components/products/FiltersSidebar";
 import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
 import { products } from "@/data/products";
 import { motion } from "framer-motion";
 import { Leaf, Zap, Shield, Heart, Grid3X3, List } from "lucide-react";
@@ -21,7 +20,7 @@ export default function Home() {
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [filters, setFilters] = useState<Filters>({
-    priceRange: [0, 50000],
+    priceRange: [0, 20000],
     inStock: false,
     sortBy: "name",
   });
@@ -192,7 +191,6 @@ export default function Home() {
         </section>
       </main>
 
-      <Footer />
 
       {/* Modals */}
       <ProductModal

@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useState } from "react";
 import { Card, CardContent } from "../ui/card";
@@ -20,20 +20,23 @@ export function ProductCard({
 }: ProductCardProps) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const formatPrice = (price: number) => {
-    return new Intl.NumberFormat("kz-KZ").format(price);
-  };
+  const formatPrice = (price: number) =>
+    new Intl.NumberFormat("kk-KZ").format(price);
 
+  // ---------- LIST VIEW (mobile-friendly) ----------
   if (viewMode === "list") {
     return (
       <Card
-        className="group overflow-hidden hover:shadow-xl transition-all duration-300 animate-in cursor-pointer"
+        className="group overflow-hidden transition-all duration-300 hover:shadow-lg cursor-pointer"
         onClick={() => onProductClick(product)}
       >
         <CardContent className="p-0">
-          <div className="flex items-center gap-4 p-4">
-            <div className="relative flex-shrink-0">
-              <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-muted">
+          {/* На мобильном — вертикально, на md+ — горизонтально */}
+          <div className="flex flex-col md:flex-row md:items-center gap-4 p-4">
+            {/* Image */}
+            <div className="relative w-full md:w-28 md:h-28">
+              {/* mobile top image: keep ratio */}
+              <div className="relative w-full aspect-[4/3] md:aspect-auto md:w-28 md:h-28 overflow-hidden rounded-lg bg-muted">
                 <Image
                   src={product.images[0].src}
                   alt={product.title}
@@ -42,50 +45,90 @@ export function ProductCard({
                     imageLoaded ? "opacity-100" : "opacity-0"
                   }`}
                   onLoad={() => setImageLoaded(true)}
-                  sizes="80px"
+                  sizes="(max-width: 768px) 100vw, 112px"
+                  priority={false}
                 />
               </div>
+
               {product.images.length > 1 && (
-                <div className="absolute -top-1 -right-1 bg-[#60C20E] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                <div className="absolute -top-1 -right-1 hidden md:flex bg-[#60C20E] text-white text-xs rounded-full w-5 h-5 items-center justify-center">
                   +{product.images.length - 1}
                 </div>
               )}
             </div>
 
+            {/* Content */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold truncate group-hover:text-[#60C20E] transition-colors">
+              <h3 className="font-semibold line-clamp-2 group-hover:text-[#60C20E] transition-colors">
                 {product.title}
               </h3>
-              <div className="text-2xl font-bold text-[#60C20E] mt-1">
-                {formatPrice(product.price)} {product.unit}
+
+              <div className="mt-1 text-2xl font-bold text-[#60C20E]">
+                {formatPrice(product.price)} {product.unit ?? "₸"}
               </div>
             </div>
 
-            <Button
-              size="sm"
-              className="bg-[#60C20E] hover:bg-[#4ea30c] whitespace-nowrap"
-              asChild
-            >
-              <a
-                href={product.kaspiUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+            {/* Actions (md+) */}
+            <div className="hidden md:block">
+              <Button
+                size="sm"
+                className="bg-[#60C20E] hover:bg-[#4ea30c] whitespace-nowrap"
+                asChild
                 onClick={(e) => e.stopPropagation()}
               >
-                <ExternalLink className="h-4 w-4 mr-2" />
-                Купить
-              </a>
-            </Button>
+                <a
+                  href={product.kaspiUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="h-4 w-4 mr-2" />
+                  Купить
+                </a>
+              </Button>
+            </div>
+
+            {/* Actions (mobile): отдельный ряд, full width */}
+            <div className="md:hidden">
+              <div className="flex gap-2">
+                {product.images.length > 1 && (
+                  <Button
+                    variant="secondary"
+                    className="flex-1 bg-background/80 backdrop-blur"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onProductClick(product);
+                    }}
+                  >
+                    <Eye className="h-4 w-4 mr-2" />
+                    {product.images.length} фото
+                  </Button>
+                )}
+                <Button
+                  className="flex-1 bg-[#60C20E] hover:bg-[#4ea30c]"
+                  asChild
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <a
+                    href={product.kaspiUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Купить
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </CardContent>
       </Card>
     );
   }
 
-  // Grid View
+  // ---------- GRID VIEW ----------
   return (
     <Card
-      className="group overflow-hidden hover:shadow-xl transition-all duration-300 animate-in cursor-pointer hover-lift"
+      className="group overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer hover-lift"
       onClick={() => onProductClick(product)}
     >
       <CardContent className="p-0">
@@ -99,7 +142,7 @@ export function ProductCard({
               imageLoaded ? "opacity-100" : "opacity-0"
             }`}
             onLoad={() => setImageLoaded(true)}
-            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1200px) 33vw, 25vw"
           />
 
           {/* View Images Badge */}
@@ -125,7 +168,7 @@ export function ProductCard({
             <Button
               variant="secondary"
               size="sm"
-              className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-background/80 backdrop-blur"
+              className="opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300 bg-background/80 backdrop-blur"
               onClick={(e) => {
                 e.stopPropagation();
                 onProductClick(product);
@@ -145,19 +188,18 @@ export function ProductCard({
 
           <div className="flex items-center justify-between">
             <span className="text-2xl font-bold text-[#60C20E]">
-              {formatPrice(product.price)} {product.unit}
+              {formatPrice(product.price)} {product.unit ?? "₸"}
             </span>
           </div>
-
           <Button
             className="w-full bg-gradient-to-r from-[#60C20E] to-green-500 hover:from-[#4ea30c] hover:to-green-600 transition-all duration-300"
             asChild
+            onClick={(e) => e.stopPropagation()}
           >
             <a
               href={product.kaspiUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
               className="flex items-center justify-center gap-2"
             >
               <ExternalLink className="h-4 w-4" />
