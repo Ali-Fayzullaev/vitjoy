@@ -25,7 +25,7 @@ export function ProductCard({ product, display, onProductClick }: ProductCardPro
     return (
       <div
         className="group cursor-pointer overflow-hidden rounded-2xl border bg-card transition hover:shadow-lg"
-        onClick={() => onProductClick(product)}
+        onClick={() => onProductClick(product)} id='catalog'
       >
         <div className={`relative ${aspect} bg-muted overflow-hidden`}>
           <Image
@@ -57,7 +57,7 @@ export function ProductCard({ product, display, onProductClick }: ProductCardPro
   return (
     <div
       className="group cursor-pointer overflow-hidden rounded-2xl border bg-card transition hover:shadow-lg"
-      onClick={() => onProductClick(product)}
+      onClick={() => onProductClick(product)} id='catalog'
     >
       <div className="flex gap-4 p-3">
         <div className="relative w-24 h-24 shrink-0 overflow-hidden rounded-lg bg-muted">

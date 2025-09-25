@@ -11,6 +11,10 @@ import type { Product } from "@/data/products";
 import { ProductsToolbar } from "@/components/products/ProductsToolbar";
 import { ProductGrid } from "@/components/products/ProductGrid";
 import type { DisplayOptions } from "@/components/products/types"; // ← добавь тип
+import { PromoHero } from "@/components/home/PromoHero";
+import { HighlightsStrip } from "@/components/home/HighlightsStrip";
+import { WhySection } from "@/components/home/WhySection";
+import { WhyFAQ } from "@/components/home/WhyFAQ";
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -85,8 +89,13 @@ export default function Home() {
 
       <main className="flex-1 w-full px-2 py-6 md:p-8">
         {" "}
-        {/* w-[100wv] → w-full */}
-        {/* ... Hero + Features как было ... */}
+        <div className="mb-6 md:mb-8">
+          <PromoHero />
+        </div>
+        {/* --- новый блок 2: UСP три карточки --- */}
+        <div className="mb-6 md:mb-8">
+          <HighlightsStrip />
+        </div>
         <section className="space-y-8">
           {/* Заголовок секции как было */}
           <ProductGrid
@@ -95,6 +104,10 @@ export default function Home() {
             onProductClick={setSelectedProduct}
           />
         </section>
+        {/* Почему VITJOY */}
+        <WhySection />
+        {/* FAQ (опционально) */}
+        <WhyFAQ />
       </main>
 
       <ProductModal
