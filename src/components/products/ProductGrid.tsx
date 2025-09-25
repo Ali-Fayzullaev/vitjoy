@@ -1,3 +1,4 @@
+// src/components/products/ProductGrid.tsx
 'use client';
 
 import type { Product } from '@/data/products';
@@ -26,15 +27,21 @@ export function ProductGrid({ products, display, onProductClick }: Props) {
     );
   }
 
-  const cols =
-    display.columns === 2
-      ? 'grid-cols-1 sm:grid-cols-2'
-      : display.columns === 3
-      ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-      : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+  // Маппинг для Tailwind (чтобы классы попали в билд)
+  const COLS: Record<1|2|3|4, string> = {
+    1: 'grid-cols-1',
+    2: 'grid-cols-2',
+    3: 'grid-cols-3',
+    4: 'grid-cols-4',
+  };
+
+  // На очень узких экранах 1 колонка может быть удобнее.
+  // Если хочешь разрешить 1 колонку — расширь тип DisplayOptions.columns и маппинг.
+  const baseCols = display.columns in COLS ? (display.columns as 2|3|4) : 2;
+  const gridColsClass = COLS[baseCols];
 
   return (
-    <div className={`grid ${cols} gap-4 md:gap-6`}>
+    <div className={`grid ${gridColsClass} gap-4 md:gap-6 sm:${COLS[Math.max(2, baseCols as number) as 2|3|4]}`}>
       {products.map((p) => (
         <ProductCard
           key={p.id}

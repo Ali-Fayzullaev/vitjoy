@@ -46,9 +46,9 @@ export function ProductsToolbar({
 
   return (
     <div className="sticky top-[calc(env(safe-area-inset-top)+56px)] z-40 border-b bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto max-w-6xl px-4 sm:px-6 py-3 space-y-3">
+      <div className="w-[100wv] px-4 sm:px-6 py-3 space-y-3">
         {/* Поиск */}
-        <div className="relative w-full md:max-w-md lg:max-w-lg xl:max-w-2xl">
+        <div className="relative  w-full">
           <Search className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Найдите нужный продукт…"
@@ -71,28 +71,6 @@ export function ProductsToolbar({
               onChange={onDisplayChange}
               onFiltersOpen={onFiltersOpen}
             />
-
-            {/* Быстрые кнопки Grid/List (optional, можно оставить) */}
-            <div className="hidden sm:flex items-center gap-1">
-              <Button
-                variant={display.viewMode === "grid" ? "default" : "outline"}
-                size="icon"
-                onClick={() => setDisplayField("viewMode", "grid")}
-                className={display.viewMode === "grid" ? "bg-[#60C20E] hover:bg-[#4ea30c]" : ""}
-                aria-label="Сетка"
-              >
-                <Grid3X3 className="h-4 w-4" />
-              </Button>
-              <Button
-                variant={display.viewMode === "list" ? "default" : "outline"}
-                size="icon"
-                onClick={() => setDisplayField("viewMode", "list")}
-                aria-label="Список"
-              >
-                <List className="h-4 w-4" />
-              </Button>
-            </div>
-
             <Button
               variant="outline"
               onClick={onFiltersOpen}
