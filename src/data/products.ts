@@ -5,6 +5,7 @@ export type Product = {
   unit?: string;
   kaspiUrl: string;
   images: { src: string; alt: string }[];
+  inStock?: boolean;
 };
 
 export const products: Product[] = [
@@ -22,6 +23,7 @@ export const products: Product[] = [
       { src: "/images/img1/img5.png", alt: "Green Boost — баночка" },
       { src: "/images/img1/img6.png", alt: "Green Boost — баночка" },
     ],
+    inStock: true,
   },
   {
     id: "2",
@@ -37,6 +39,7 @@ export const products: Product[] = [
       { src: "/images/img2/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img2/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "3",
@@ -52,6 +55,7 @@ export const products: Product[] = [
       { src: "/images/img3/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img3/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "4",
@@ -67,6 +71,7 @@ export const products: Product[] = [
       { src: "/images/img4/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img4/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "5",
@@ -82,6 +87,7 @@ export const products: Product[] = [
       { src: "/images/img5/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img5/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "6",
@@ -97,6 +103,7 @@ export const products: Product[] = [
       { src: "/images/img6/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img6/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "7",
@@ -112,6 +119,7 @@ export const products: Product[] = [
       { src: "/images/img7/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img7/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "8",
@@ -127,6 +135,7 @@ export const products: Product[] = [
       { src: "/images/img8/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img8/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "9",
@@ -142,6 +151,7 @@ export const products: Product[] = [
       { src: "/images/img9/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img9/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "10",
@@ -157,6 +167,7 @@ export const products: Product[] = [
       { src: "/images/img10/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img10/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "11",
@@ -172,6 +183,7 @@ export const products: Product[] = [
       { src: "/images/img11/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img11/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
   {
     id: "12",
@@ -187,5 +199,6 @@ export const products: Product[] = [
       { src: "/images/img12/img5.png", alt: "Omega+ — инфографика" },
       { src: "/images/img12/img6.png", alt: "Omega+ — семья и здоровье" },
     ],
+    inStock: true,
   },
 ];

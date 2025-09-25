@@ -1,51 +1,38 @@
 'use client';
 
-import { Leaf, Sun, Moon, ShoppingCart } from 'lucide-react';
-import { Button } from '../ui/button';
-import { useTheme } from 'next-themes';
-import { useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Filter, Search } from 'lucide-react';
+import { Input } from '@/components/ui/input';
 
-export function Header() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+type HeaderProps = {
+  onSearch: (q: string) => void;
+  onFiltersOpen: () => void;
+};
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
+export function Header({ onSearch, onFiltersOpen }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-2">
-            <Leaf className="h-8 w-8 text-[#60C20E]" />
-            <span className="text-xl font-bold bg-gradient-to-r from-[#60C20E] to-green-400 bg-clip-text text-transparent">
-              VITJOY
-            </span>
-          </div>
+    <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
+      <div className="container flex h-14 items-center gap-3">
+        {/* Лого */}
+        <div className="font-extrabold tracking-wide text-emerald-600 dark:text-emerald-400">
+          VITJOY
         </div>
 
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          >
-            {mounted ? (
-              theme === 'dark' ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )
-            ) : (
-              <Sun className="h-5 w-5" />
-            )}
-            <span className="sr-only">Toggle theme</span>
-          </Button>
-          
-          <Button variant="ghost" size="icon">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="sr-only">Cart</span>
+        {/* Поиск */}
+        <div className="ml-auto flex w-full max-w-lg items-center gap-2">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Поиск продуктов…"
+              className="pl-10"
+              onChange={(e) => onSearch(e.target.value)}
+            />
+          </div>
+
+          {/* Фильтры */}
+          <Button variant="outline" onClick={onFiltersOpen} className="shrink-0">
+            <Filter className="mr-2 h-4 w-4" />
+            Фильтры
           </Button>
         </div>
       </div>
