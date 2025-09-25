@@ -2,8 +2,8 @@ import { Leaf, Phone, MapPin, Building, Clock } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t bg-muted/20">
-      <div className="container py-12">
+    <footer className="w-full border-t py-8">
+      <div className="w-[100wv] px-4 md:px-10 text-sm text-muted-foreground">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">

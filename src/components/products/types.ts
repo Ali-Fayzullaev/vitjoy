@@ -5,3 +5,12 @@ export type Filters = {
   inStock: boolean;
   sortBy: SortOption;
 };
+
+export type DisplayOptions = {
+  viewMode: 'grid' | 'list';
+  columns: 2 | 3 | 4;
+  density: 'cozy' | 'compact';
+  ratio: '1/1' | '4/3' | '3/4';
+  imageFit: 'cover' | 'contain';
+  showDescription: boolean;
+};

@@ -22,22 +22,17 @@ export const metadata: Metadata = {
   keywords: "витамины, добавки, здоровье, Kaspi, VITJOY",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// src/app/layout.tsx
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="min-h-svh bg-gradient-to-br from-background to-muted/20 mx-auto">
-            <main className="min-h-inherit flex items-center justify-center">
-              {children}
-            </main>
-            <Footer/>
+          <div className="min-h-svh bg-gradient-to-br from-background to-muted/20">
+            {/* ВАЖНО: убрали items-center justify-center */}
+            <main className="min-h-inherit">{children}</main>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>
