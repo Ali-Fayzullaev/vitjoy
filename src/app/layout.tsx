@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css"
-import { Header } from "@/components/layout/Header";
+import "./globals.css";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
 const geistSans = Geist({
@@ -32,9 +31,10 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="min-h-screen bg-gradient-to-br from-background to-muted/20 mx-auto">
-            <Header />
-            <main className="container py-8">{children}</main>
+          <div className="min-h-svh bg-gradient-to-br from-background to-muted/20">
+            <main className="min-h-inherit flex items-center justify-center">
+              {children}
+            </main>
           </div>
         </ThemeProvider>
       </body>
