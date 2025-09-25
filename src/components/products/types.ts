@@ -8,7 +8,7 @@ export type Filters = {
 
 export type DisplayOptions = {
   viewMode: 'grid' | 'list';
-  columns: 2 | 3 | 4;
+  columns: 1 | 2 | 3 | 4;           // ← было 2|3|4, добавили 1
   density: 'cozy' | 'compact';
   ratio: '1/1' | '4/3' | '3/4';
   imageFit: 'cover' | 'contain';

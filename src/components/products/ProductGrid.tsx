@@ -27,21 +27,22 @@ export function ProductGrid({ products, display, onProductClick }: Props) {
     );
   }
 
-  // Маппинг для Tailwind (чтобы классы попали в билд)
-  const COLS: Record<1|2|3|4, string> = {
-    1: 'grid-cols-1',
-    2: 'grid-cols-2',
-    3: 'grid-cols-3',
-    4: 'grid-cols-4',
-  };
-
-  // На очень узких экранах 1 колонка может быть удобнее.
-  // Если хочешь разрешить 1 колонку — расширь тип DisplayOptions.columns и маппинг.
-  const baseCols = display.columns in COLS ? (display.columns as 2|3|4) : 2;
-  const gridColsClass = COLS[baseCols];
+  // Строим классы адаптивно:
+  // база: 1 колонка всегда
+  // sm: ≥2 если выбрано 2+
+  // md: ≥3 если выбрано 3+
+  // lg: ≥4 если выбрано 4
+  const gridCols = [
+    'grid-cols-1',                                  // base (мобилка)
+    display.columns >= 2 ? 'sm:grid-cols-2' : '',
+    display.columns >= 3 ? 'md:grid-cols-3' : '',
+    display.columns >= 4 ? 'lg:grid-cols-4' : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   return (
-    <div className={`grid ${gridColsClass} gap-4 md:gap-6 sm:${COLS[Math.max(2, baseCols as number) as 2|3|4]}`}>
+    <div className={`grid ${gridCols} gap-4 md:gap-6`}>
       {products.map((p) => (
         <ProductCard
           key={p.id}

@@ -29,22 +29,30 @@ export default function Home() {
 
   // NEW: состояние отображения карточек (grid/list, колонки и т.д.)
   const [display, setDisplay] = useState<DisplayOptions>({
-    viewMode: "grid",
-    columns: 3,
-    density: "cozy",
-    ratio: "1/1",
-    imageFit: "cover",
-    showDescription: false,
-  });
+  viewMode: 'grid',
+  columns: 3,               // временное начальное значение (будет скорректировано ниже)
+  density: 'cozy',
+  ratio: '1/1',
+  imageFit: 'cover',
+  showDescription: false,
+});
 
-  // опционально: восстановление display из localStorage
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem("vitjoy-display");
-      if (raw) setDisplay((prev) => ({ ...prev, ...JSON.parse(raw) }));
-    } catch {}
-  }, []);
-
+  // 1) пробуем восстановить из localStorage
+useEffect(() => {
+  try {
+    const raw = localStorage.getItem('vitjoy-display');
+    if (raw) {
+      setDisplay((prev) => ({ ...prev, ...JSON.parse(raw) }));
+    } else {
+      // 2) если сохранённого нет — ставим умный дефолт по медиазапросу
+      const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+      setDisplay((prev) => ({ ...prev, columns: isDesktop ? 4 : 1 }));
+    }
+  } catch {
+    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
+    setDisplay((prev) => ({ ...prev, columns: isDesktop ? 4 : 1 }));
+  }
+}, []);
   const filteredProducts = useMemo(() => {
     let result = products.filter((product) => {
       const matchesSearch = product.title
