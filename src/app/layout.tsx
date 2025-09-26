@@ -24,11 +24,21 @@ export const metadata: Metadata = {
 
 // src/app/layout.tsx
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ru" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+        >
           <div className="min-h-svh bg-gradient-to-br from-background to-muted/20">
             {/* ВАЖНО: убрали items-center justify-center */}
             <main className="min-h-inherit">{children}</main>

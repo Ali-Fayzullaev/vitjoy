@@ -127,9 +127,6 @@ export function ProductDetailClient({ product }: { product: Product }) {
         <div>
           <h1 className="text-2xl font-extrabold">{product.title}</h1>
           <div className="mt-2 flex items-center gap-3">
-            <div className="text-2xl font-bold text-emerald-600">
-              {new Intl.NumberFormat('kk-KZ').format(product.price)} {product.unit ?? '₸'}
-            </div>
             <div className={`rounded-full px-2 py-1 text-xs font-medium ${product.inStock ? 'bg-emerald-100 text-emerald-700' : 'bg-red-100 text-red-700'}`}>
               {product.inStock ? 'В наличии' : 'Нет в наличии'}
             </div>

@@ -2,9 +2,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Grid3X3, List, Filter, Search } from "lucide-react";
+import {  Search } from "lucide-react";
 import { DisplayControls } from "./DisplayControls";
 import type { DisplayOptions } from "./types";
 
@@ -71,14 +70,6 @@ export function ProductsToolbar({
               onChange={onDisplayChange}
               onFiltersOpen={onFiltersOpen}
             />
-            <Button
-              variant="outline"
-              onClick={onFiltersOpen}
-              className="rounded-xl"
-            >
-              <Filter className="mr-2 h-4 w-4" />
-              Фильтры
-            </Button>
           </div>
         </div>
       </div>

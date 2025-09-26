@@ -3,7 +3,6 @@
 
 import { useState, useMemo, useEffect } from "react";
 import { ProductModal } from "@/components/products/ProductModal";
-import { FiltersSidebar } from "@/components/products/FiltersSidebar";
 import { Header } from "@/components/layout/Header";
 import { products } from "@/data/products";
 import type { Filters } from "@/components/products/types";
@@ -21,65 +20,49 @@ export default function Home() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isFiltersOpen, setIsFiltersOpen] = useState(false);
 
+  // NEW: состояние отображения карточек (grid/list, колонки и т.д.)
+  const [display, setDisplay] = useState<DisplayOptions>({
+    viewMode: "grid",
+    columns: 4, // временное начальное значение (будет скорректировано ниже)
+    density: "cozy",
+    ratio: "1/1",
+    imageFit: "cover",
+    showDescription: false,
+  });
+
   const [filters, setFilters] = useState<Filters>({
-    priceRange: [0, 20000],
     inStock: false,
     sortBy: "name",
   });
 
-  // NEW: состояние отображения карточек (grid/list, колонки и т.д.)
-  const [display, setDisplay] = useState<DisplayOptions>({
-  viewMode: 'grid',
-  columns: 3,               // временное начальное значение (будет скорректировано ниже)
-  density: 'cozy',
-  ratio: '1/1',
-  imageFit: 'cover',
-  showDescription: false,
-});
-
-  // 1) пробуем восстановить из localStorage
-useEffect(() => {
-  try {
-    const raw = localStorage.getItem('vitjoy-display');
-    if (raw) {
-      setDisplay((prev) => ({ ...prev, ...JSON.parse(raw) }));
-    } else {
-      // 2) если сохранённого нет — ставим умный дефолт по медиазапросу
-      const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-      setDisplay((prev) => ({ ...prev, columns: isDesktop ? 4 : 1 }));
-    }
-  } catch {
-    const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-    setDisplay((prev) => ({ ...prev, columns: isDesktop ? 4 : 1 }));
-  }
-}, []);
   const filteredProducts = useMemo(() => {
-    const result = products.filter((product) => {
+    return products.filter((product) => {
+      // Фильтрация по searchQuery (по имени продукта)
       const matchesSearch = product.title
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
-      const [min, max] = filters.priceRange;
-      const matchesPrice = product.price >= min && product.price <= max;
-
-      const matchesStock = filters.inStock ? product.inStock === true : true;
-
-      return matchesSearch && matchesPrice && matchesStock;
+      // Здесь можно добавить дополнительные фильтры, например, по наличию товара
+      return matchesSearch;
     });
+  }, [products, searchQuery]);
 
-    result.sort((a, b) => {
-      switch (filters.sortBy) {
-        case "price-asc":
-          return a.price - b.price;
-        case "price-desc":
-          return b.price - a.price;
-        default:
-          return a.title.localeCompare(b.title);
+  // 1) пробуем восстановить из localStorage
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("vitjoy-display");
+      if (raw) {
+        setDisplay((prev) => ({ ...prev, ...JSON.parse(raw) }));
+      } else {
+        // 2) если сохранённого нет — ставим умный дефолт по медиазапросу
+        const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+        setDisplay((prev) => ({ ...prev, columns: isDesktop ? 4 : 1 }));
       }
-    });
-
-    return result;
-  }, [searchQuery, filters]);
+    } catch {
+      const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+      setDisplay((prev) => ({ ...prev, columns: isDesktop ? 4 : 1 }));
+    }
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -122,14 +105,6 @@ useEffect(() => {
         product={selectedProduct}
         isOpen={!!selectedProduct}
         onClose={() => setSelectedProduct(null)}
-      />
-
-      <FiltersSidebar
-        isOpen={isFiltersOpen}
-        onClose={() => setIsFiltersOpen(false)}
-        onFiltersChange={setFilters}
-        currentFilters={filters}
-        maxPrice={20000}
       />
     </div>
   );

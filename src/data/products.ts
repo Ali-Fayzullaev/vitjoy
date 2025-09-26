@@ -1,8 +1,6 @@
 export type Product = {
   id: string;
   title: string;
-  price: number;
-  unit?: string;
   kaspiUrl: string;
   images: { src: string; alt: string }[];
   inStock?: boolean;
@@ -14,8 +12,6 @@ export const products: Product[] = [
   {
     id: "bcaa-aminokompleks-apelsin",
     title: "BCAA Vitjoy Аминокомплекс апельсин 180 г",
-    price: 9890,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/bcaa-vitjoy-aminokompleks-apel-sin-180-g-141866367/",
     images: [
@@ -50,8 +46,6 @@ export const products: Product[] = [
     id: "metil-sulfonil-metan-svyazki-sustavy",
     title:
       "Препарат для укрепления связок и суставов Vitjoy Метил Сульфонил Метан 60 таблеток",
-    price: 9890,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/preparat-dlja-ukreplenija-svjazok-i-sustavov-vitjoy-metil-sul-fonil-metan-60-tabletok-141866374/",
     images: [
@@ -80,8 +74,6 @@ export const products: Product[] = [
   {
     id: "vitamin-b5-pantotenovaya-kislota",
     title: "VITJOY Витамин B5 Пантотеновая кислота капсулы 60 шт",
-    price: 4890,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-vitamin-b5-pantotenovaja-kislota-kapsuly-60-sht-144812695/",
     images: [
@@ -142,8 +134,6 @@ export const products: Product[] = [
   {
     id: "vitamin-d3-5000-me-k2",
     title: "VITJOY Витамины D3 (5000 МЕ) + K2 капсулы 60 шт",
-    price: 4980,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-vitaminy-d3-5000-me-43-k2-kapsuly-60-sht-144812311/",
     images: [
@@ -179,8 +169,6 @@ export const products: Product[] = [
   {
     id: "pikolinat-hroma-s-vitaminom-c",
     title: "VITJOY Пиколинат хрома с витамином С капсулы 60 шт",
-    price: 4890,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-pikolinat-hroma-s-vitaminom-s-kapsuly-60-sht-144811771/",
     images: [
@@ -218,8 +206,6 @@ export const products: Product[] = [
   {
     id: "alfa-lipoevaya-kislota",
     title: "VITJOY альфа липоевая кислота капсулы 60 шт",
-    price: 7190,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-al-fa-lipoevaja-kislota-kapsuly-60-sht-145987927/",
     images: [
@@ -270,8 +256,6 @@ export const products: Product[] = [
   {
     id: "magniy-tsitratfv",
     title: "VITJOY магний капсулы 120 шт",
-    price: 7180,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-magnii-kapsuly-120-sht-145987777/",
     images: [
@@ -307,8 +291,6 @@ export const products: Product[] = [
     id: "morshoi-kollagen-gialuronovaya-kislota-vitamin-c",
     title:
       "VITJOY Морской Коллаген + Гиалуроновая Кислота + Витамин С капсулы 120 шт",
-    price: 9990,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-morskoi-kollagen-43-gialuronovaja-kislota-43-vitamin-s-kapsuly-120-sht-145987845/",
     images: [
@@ -351,8 +333,6 @@ Collagen пептидный 1 и 2 типа — самый распростра�
   {
     id: "testosteronovyj-buster-zma",
     title: "Тестостероновый бустер Vitjoy ZMA капсулы/таблетки 90",
-    price: 4490,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/testosteronovyi-buster-vitjoy-zma-kapsuly-tabletki-90-141916661/",
     images: [
@@ -386,8 +366,6 @@ Collagen пептидный 1 и 2 типа — самый распростра�
   {
     id: "l-carnitine",
     title: "Аминокислота VITJOY L-Carnitine нейтральный 90 70 г",
-    price: 8590,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/aminokislota-vitjoy-l-carnitine-neitral-nyi-90-70-g-137870472/",
     images: [
@@ -428,8 +406,6 @@ Collagen пептидный 1 и 2 типа — самый распростра�
   {
     id: "collagen-complex-poroshok",
     title: "VITJOY Collagen Complex порошок 180",
-    price: 4989,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/vitjoy-collagen-complex-poroshok-180-141866380/",
     images: [
@@ -477,8 +453,6 @@ Collagen пептидный 1 и 2 типа — самый распростра�
     id: "kreatin-monogidrat-vitamin-c-tropicheskii-miks",
     title:
       "Креатин Vitjoy Креатин Моногидрат и Витамин С Тропический Микс 200 г",
-    price: 4290,
-    unit: "₸",
     kaspiUrl:
       "https://kaspi.kz/shop/p/kreatin-vitjoy-kreatin-monogidrat-i-vitamin-s-tropicheskii-miks-200-g-140535544/",
     images: [

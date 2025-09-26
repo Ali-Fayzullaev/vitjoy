@@ -290,26 +290,9 @@ export function DisplayControls({ value, onChange, onFiltersOpen }: Props) {
                 className="data-[state=checked]:bg-[#60C20E]"
               />
             </div>
-
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={onFiltersOpen}
-            >
-              Открыть фильтры каталога
-            </Button>
           </div>
         </PopoverContent>
       </Popover>
-
-      {/* Кнопка «Фильтры» как у тебя */}
-      <Button
-        variant="outline"
-        onClick={onFiltersOpen}
-        className="rounded-xl sm:hidden"
-      >
-        Фильтры
-      </Button>
     </div>
   );
 }
