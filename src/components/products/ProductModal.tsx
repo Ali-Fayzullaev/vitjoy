@@ -8,6 +8,7 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -182,8 +183,6 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   ))}
                 </div>
               )}
-
-              
             </div>
           </div>
 
@@ -226,10 +225,17 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   Купить на Kaspi
                 </a>
               </Button>
-              <Link href={`/${product.id}`}>
-              <Button>
-                Падробнее
-              </Button>
+              {/* Подробнее Button */}
+              <Link href={`/${product.id}`} className="block mt-3">
+                <Button
+                  variant="ghost"
+                  className="w-full h-12 rounded-xl bg-gradient-to-r from-transparent via-muted/20 to-transparent hover:via-muted/40 border border-border/30 hover:border-border/50 transition-all duration-300 group"
+                >
+                  <span className="inline-flex items-center gap-2 font-semibold text-foreground/80 group-hover:text-foreground">
+                    Подробнее о продукте
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </span>
+                </Button>
               </Link>
               <p className="mt-1 text-center text-[11px] text-neutral-500 dark:text-neutral-400">
                 Откроется официальный магазин Kaspi
