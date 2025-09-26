@@ -182,6 +182,8 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   ))}
                 </div>
               )}
+
+              
             </div>
           </div>
 
@@ -225,7 +227,9 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                 </a>
               </Button>
               <Link href={`/${product.id}`}>
-                <Button>Падробнее</Button>
+              <Button>
+                Падробнее
+              </Button>
               </Link>
               <p className="mt-1 text-center text-[11px] text-neutral-500 dark:text-neutral-400">
                 Откроется официальный магазин Kaspi
