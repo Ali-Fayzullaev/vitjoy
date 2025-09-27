@@ -78,16 +78,16 @@ export default function Home() {
         total={filteredProducts.length}
       />
 
-      <main className="flex-1 w-full px-2 py-6 md:p-8">
+      <main className="flex-1 w-full  py-0 md:p-0">
         {" "}
         <div className="mb-6 md:mb-8">
           <PromoHero />
         </div>
         {/* --- новый блок 2: UСP три карточки --- */}
-        <div className="mb-6 md:mb-8">
+        <div className="mb-6 md:mb-8 py-6 md:p-8 px-2">
           <HighlightsStrip />
         </div>
-        <section className="space-y-8">
+        <section className="space-y-8 py-6 md:p-8 px-2">
           {/* Заголовок секции как было */}
           <ProductGrid
             products={filteredProducts}

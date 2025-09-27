@@ -244,7 +244,7 @@ export function ProductDetailClient({ product }: { product: Product }) {
           <div className="space-y-4">
 
             <div className="flex gap-3">
-              <Button asChild className="flex-1 h-14 rounded-2xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white shadow-lg hover:shadow-xl transition-all duration-200">
+              <Button asChild className="flex-1 h-14 rounded-2xl bg-gradient-to-r from-red-600 to-red-500 hover:from-red-500 hover:to-red-400 text-white shadow-lg hover:shadow-xl transition-all duration-200">
                 <a href={product.kaspiUrl ?? '#'} target="_blank" rel="noreferrer noopener" onClick={(e) => {
                   if (!product.kaspiUrl) e.preventDefault();
                 }}>
