@@ -54,7 +54,7 @@ useEffect(() => {
   }
 }, []);
   const filteredProducts = useMemo(() => {
-    let result = products.filter((product) => {
+    const result = products.filter((product) => {
       const matchesSearch = product.title
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
