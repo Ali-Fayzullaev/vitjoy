@@ -8,11 +8,13 @@ import {
   ChevronRight,
   ChevronDown,
   ChevronUp,
+  ArrowRight,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { Product } from "../../data/products";
+import Link from "next/link";
 
 interface ProductModalProps {
   product: Product | null;
@@ -181,28 +183,6 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   ))}
                 </div>
               )}
-
-              {/* MOBILE PREV/NEXT BAR (на случай, если стрелки перекрываются) */}
-              {total > 1 && (
-                <div className="md:hidden absolute bottom-3 left-0 right-0 z-10 flex items-center justify-between px-3">
-                  <Button
-                    onClick={prevImage}
-                    className="rounded-full bg-white/80 backdrop-blur text-neutral-900 shadow hover:bg-white dark:bg-neutral-900/70 dark:text-neutral-100"
-                    size="sm"
-                    aria-label="Предыдущее"
-                  >
-                    ‹ Пред
-                  </Button>
-                  <Button
-                    onClick={nextImage}
-                    className="rounded-full bg-white/80 backdrop-blur text-neutral-900 shadow hover:bg-white dark:bg-neutral-900/70 dark:text-neutral-100"
-                    size="sm"
-                    aria-label="Следующее"
-                  >
-                    След ›
-                  </Button>
-                </div>
-              )}
             </div>
           </div>
 
@@ -218,9 +198,6 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
               {/* price */}
               <div className="rounded-2xl border border-emerald-500/20 bg-emerald-50/50 p-4 dark:border-emerald-500/25 dark:bg-emerald-900/10">
-                <div className="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight">
-                  {formatPrice(product.price)} {product.unit || "₸"}
-                </div>
                 <div className="mt-1 text-xs sm:text-sm text-neutral-600 dark:text-neutral-300">
                   💰 В наличии • 🚚 Быстрая доставка
                 </div>
@@ -232,25 +209,40 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               )}
             </div>
 
-            {/* buy button */}
-            <div className="sticky bottom-0 border-t bg-white/80 p-3 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/70">
-              <Button
-                className="h-12 w-full rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 text-base font-semibold shadow-lg hover:from-emerald-500 hover:to-green-500"
-                asChild
-              >
-                <a
-                  href={product.kaspiUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2"
+             {/* STICKY FOOTER */}
+             <div className="sticky bottom-0 border-t border-neutral-200/50 bg-white/90 p-6 backdrop-blur-xl dark:border-neutral-800/50 dark:bg-neutral-950/90">
+              <div className="space-y-3">
+                <Button
+                  className="h-14 w-full rounded-2xl bg-gradient-to-r from-red-500 to-red-600 text-white text-lg font-semibold shadow-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
+                  asChild
                 >
-                  <ExternalLink className="h-5 w-5" />
-                  Купить на Kaspi
-                </a>
-              </Button>
-              <p className="mt-1 text-center text-[11px] text-neutral-500 dark:text-neutral-400">
-                Откроется официальный магазин Kaspi
-              </p>
+                  <a
+                    href={product.kaspiUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-3"
+                  >
+                    <ExternalLink className="h-5 w-5" />
+                    Купить на Kaspi
+                  </a>
+                </Button>
+
+                <Link href={`/${product.id}`} className="block">
+                  <Button
+                    variant="ghost"
+                    className="w-full h-12 rounded-xl border-2 border-neutral-300/50 bg-transparent hover:bg-neutral-100/50 dark:border-neutral-700/50 dark:hover:bg-neutral-800/50 transition-all duration-300 group"
+                  >
+                    <span className="inline-flex items-center gap-2 font-medium text-neutral-700 group-hover:text-neutral-900 dark:text-neutral-300 dark:group-hover:text-white">
+                      Подробнее о продукте
+                      <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </Button>
+                </Link>
+
+                <p className="text-center text-xs text-neutral-500 dark:text-neutral-400 pt-1">
+                  Откроется официальный магазин Kaspi
+                </p>
+              </div>
             </div>
           </div>
         </div>
