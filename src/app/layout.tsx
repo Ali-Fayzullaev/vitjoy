@@ -26,17 +26,33 @@ export const metadata: Metadata = {
 // Пиксель можно поставить через переменную окружения
 const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? "1563271335085473";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
-        {/* Meta Pixel: вставляем только если есть ID */}
+        {/* ---- Google Analytics 4 ---- */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-77GW3PB477"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga4-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-77GW3PB477', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+
+        {/* ---- Meta (Facebook) Pixel ---- */}
         {FB_PIXEL_ID ? (
           <>
             <Script
@@ -55,7 +71,6 @@ fbq('init', '${FB_PIXEL_ID}');
 fbq('track', 'PageView');`,
               }}
             />
-            {/* noscript fallback */}
             <noscript>
               <img
                 height="1"
@@ -68,13 +83,8 @@ fbq('track', 'PageView');`,
           </>
         ) : null}
 
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem={false}
-        >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <div className="min-h-svh bg-gradient-to-br from-background to-muted/20">
-            {/* ВАЖНО: убрали items-center justify-center */}
             <main className="min-h-inherit">{children}</main>
             <Footer />
           </div>
@@ -83,3 +93,4 @@ fbq('track', 'PageView');`,
     </html>
   );
 }
+
