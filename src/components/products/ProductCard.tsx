@@ -46,6 +46,11 @@ export function ProductCard({
             }
             sizes="(max-width:768px) 50vw, (max-width:1200px) 33vw, 25vw"
           />
+          {product.isNew && (
+            <div className="absolute top-2 left-2 bg-[#60C20E] text-white text-xs font-semibold px-2 py-1 rounded-full">
+              Новинка
+            </div>
+          )}
         </div>
         <div className={`${padding} space-y-2`}>
           <h3
@@ -86,6 +91,11 @@ export function ProductCard({
             }
             sizes="96px"
           />
+          {product.isNew && (
+            <div className="absolute top-1 left-1 bg-[#60C20E] text-white text-xs font-semibold px-1.5 py-0.5 rounded-full">
+              Новинка
+            </div>
+          )}
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="font-semibold leading-tight line-clamp-2 group-hover:text-[#60C20E]">
