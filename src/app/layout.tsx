@@ -36,6 +36,26 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
+	 {/* ---- Google Analytics 4 ---- */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-77GW3PB477"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="ga4-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-77GW3PB477', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
+
         {/* Meta Pixel: вставляем только если есть ID */}
         {FB_PIXEL_ID ? (
           <>
